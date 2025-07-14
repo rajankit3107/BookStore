@@ -1,8 +1,11 @@
 import mongoose from "mongoose";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 async function connectDB() {
   await mongoose
-    .connect("mongodb://localhost:27017/Book_store")
+    .connect(process.env.MONGO_URL)
     .then(() => console.log(`connected to mongoDB ✅`))
     .catch((err) => console.log(`monogDB connection failed ❌`, err));
 }
